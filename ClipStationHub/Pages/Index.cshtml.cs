@@ -1,16 +1,27 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Collections.Generic;
-using ClipStationHub.Pages; // Add this namespace to access ClipsModel
 
 public class IndexModel : PageModel
 {
-    public List<string> UploadedFiles { get; set; }
+    [BindProperty]
+    public UserModel UserModel { get; set; }
+
+    public string Message { get; set; }
 
     public void OnGet()
     {
-        // Retrieve the list of displayed files from ClipsModel
-        var clipsModel = new ClipsModel();
-        clipsModel.OnGet(); // Populate the DisplayedFiles property
-        UploadedFiles = clipsModel.DisplayedFiles;
+        // Initialize any data if needed
+    }
+
+    public IActionResult OnPost()
+    {
+        if (!ModelState.IsValid)
+        {
+            return Page(); // Return the page with validation errors
+        }
+
+        // Process the form data (e.g., save to database, send email, etc.)
+        Message = "Thank you for joining the community!";
+        return Page();
     }
 }

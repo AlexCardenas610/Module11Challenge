@@ -134,3 +134,20 @@ a {
 .email-icon:hover {
   transform: scale(1.2); /* Slight zoom effect on hover */
 }
+
+.form-section {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #000000;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.text-danger {
+  color: red;
+}
+
