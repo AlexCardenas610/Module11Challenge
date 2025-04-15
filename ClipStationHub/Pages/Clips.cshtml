@@ -1,0 +1,26 @@
+@page
+@model ClipsModel
+@{
+    ViewData["Title"] = "Gaming Clips";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Welcome to the Gaming Clips page! Here you can find the latest and greatest clips from your favorite games.</p>
+
+<section>
+    <h2>Featured Clips</h2>
+    <div>
+        <!-- Placeholder for clips -->
+        <p>No clips available at the moment.</p>
+    </div>
+</section>
+
+<section>
+    <h2>Submit Your Clip</h2>
+    <p>If you have a gaming clip you'd like to share, please upload it from your device:</p>
+    <form method="post" enctype="multipart/form-data" asp-page-handler="UploadClip">
+    <label for="clipFile">Upload Clip:</label>
+    <input type="file" id="clipFile" name="ClipFile" accept="video/*" required />
+    <button type="submit">Upload Clip</button>
+</form>
+</section>
