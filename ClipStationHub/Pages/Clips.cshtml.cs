@@ -1,66 +1,41 @@
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
 
-[RequestSizeLimit(104857600)] // 100 MB
-public class UploadModel : PageModel
+namespace ClipStationHub.Pages
 {
-    private const long MaxFileSize = 104857600; // 100 MB
-
-    // Static list to store uploaded file paths
-    public static List<string> UploadedFiles { get; set; } = new List<string>();
-
-    public async Task<IActionResult> OnPostUploadAsync(IFormFile file)
+    public class ClipsModel : PageModel
     {
-        if (file == null)
+        // List to store uploaded file paths
+        public List<string> DisplayedFiles { get; set; }
+
+        public void OnGet()
         {
-            ModelState.AddModelError("File", "No file uploaded.");
-            return Page();
+            // Get the path to the uploads folder
+            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+
+            // Ensure the uploads folder exists
+            if (!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
+            }
+
+            // Get all video files in the uploads folder
+            var videoFiles = Directory.GetFiles(uploadsFolder, "*.*", SearchOption.TopDirectoryOnly);
+
+            // Filter for video file extensions (e.g., .mp4, .avi, .mkv)
+            var allowedExtensions = new[] { ".mp4", ".avi", ".mkv", ".webm" };
+            DisplayedFiles = new List<string>();
+
+            foreach (var file in videoFiles)
+            {
+                if (allowedExtensions.Contains(Path.GetExtension(file).ToLower()))
+                {
+                    // Convert the file path to a relative URL
+                    var relativePath = "/uploads/" + Path.GetFileName(file);
+                    DisplayedFiles.Add(relativePath);
+                }
+            }
         }
-
-        // Validate file size
-        if (file.Length > MaxFileSize)
-        {
-            ModelState.AddModelError("File", "File is too large. Max size is 100 MB.");
-            return Page();
-        }
-
-        // Validate file type (ensure it's a video)
-        var allowedFileTypes = new[] { "video/mp4", "video/avi", "video/mkv", "video/webm" };
-        if (!allowedFileTypes.Contains(file.ContentType))
-        {
-            ModelState.AddModelError("File", "Invalid file type. Please upload a video file.");
-            return Page();
-        }
-
-        // Validate file extension
-        var allowedExtensions = new[] { ".mp4", ".avi", ".mkv", ".webm" };
-        var fileExtension = Path.GetExtension(file.FileName).ToLower();
-        if (!allowedExtensions.Contains(fileExtension))
-        {
-            ModelState.AddModelError("File", "Invalid file extension. Only video files are allowed.");
-            return Page();
-        }
-
-        // Save the file to the server
-        var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", file.FileName);
-
-        if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads")))
-        {
-            Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads"));
-        }
-
-        using (var stream = new FileStream(uploadPath, FileMode.Create))
-        {
-            await file.CopyToAsync(stream);
-        }
-
-        // Add the file path to the static list
-        UploadedFiles.Add($"/uploads/{file.FileName}");
-
-        return RedirectToPage("/Index"); // Redirect to the home page
     }
 }

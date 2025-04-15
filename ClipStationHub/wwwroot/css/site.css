@@ -19,4 +19,118 @@ html {
 
 body {
   margin-bottom: 60px;
+  background: repeating-linear-gradient(
+    -45deg, /* Angle of the waves */
+    #0a3d62 0%, /* Darker blue */
+    rgba(10, 61, 98, 1) 10%, /* Darker blue */
+    rgba(27, 110, 194, 0.8) 20%, /* Lighter blue */
+    rgba(10, 61, 98, 1) 30% /* Darker blue */
+  );
+  background-size: 200% 200%; /* Adjust the size for smoother waves */
+  animation: wave-flow 6s linear infinite; /* Add animation for continuous flow */
+  color: #ffffff; /* Optional: Set text color to white for better contrast */
+}
+
+@keyframes wave-flow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%; /* Moves the waves horizontally */
+  }
+}
+
+a {
+  color: #1e90ff; /* Optional: Adjust link color for better visibility */
+}
+
+/* Existing styles... */
+.btn-primary {
+  color: #ffffff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid layout */
+  gap: 10px; /* Space between videos */
+  padding: 20px;
+}
+
+.video-grid video {
+  width: 100%; /* Ensure videos fit within their grid cells */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Prevent zooming in on videos */
+  border-radius: 8px; /* Optional: Add rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for better visuals */
+}
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  background: linear-gradient(to bottom, #1b6ec2, #0a3d62);
+  color: #ffffff;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+}
+
+.hero-content .btn {
+  font-size: 1.25rem;
+  padding: 10px 20px;
+}
+
+/* Features Section */
+.features-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 40px 20px;
+  background-color: #002a47;
+  text-align: center;
+}
+
+.feature h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.feature p {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.email-section {
+  margin-top: 40px;
+}
+
+.email-link {
+  display: inline-block;
+}
+
+.email-icon {
+  width: 75px; /* Adjust size as needed */
+  height: 50px;
+  transition: transform 0.3s ease;
+}
+
+.email-icon:hover {
+  transform: scale(1.2); /* Slight zoom effect on hover */
 }

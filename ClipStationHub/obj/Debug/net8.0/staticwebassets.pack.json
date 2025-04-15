@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/workspaces/Module11Challenge/ClipStationHub/wwwroot/images/email_logo.jpg",
+      "PackagePath": "staticwebassets/images/email_logo.jpg"
+    },
+    {
       "Id": "/workspaces/Module11Challenge/ClipStationHub/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
     },
@@ -243,6 +247,14 @@
     {
       "Id": "/workspaces/Module11Challenge/ClipStationHub/wwwroot/lib/jquery/dist/jquery.min.map",
       "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
+    },
+    {
+      "Id": "/workspaces/Module11Challenge/ClipStationHub/wwwroot/uploads/19637207f7459-master_playlist.MP4",
+      "PackagePath": "staticwebassets/uploads/19637207f7459-master_playlist.MP4"
+    },
+    {
+      "Id": "/workspaces/Module11Challenge/ClipStationHub/wwwroot/uploads/Valorant.MP4",
+      "PackagePath": "staticwebassets/uploads/Valorant.MP4"
     },
     {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.ClipStationHub.Microsoft.AspNetCore.StaticWebAssets.props",

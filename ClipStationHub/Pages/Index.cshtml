@@ -1,27 +1,39 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<h1>Uploaded Videos</h1>
+<div class="hero-section">
+    <div class="hero-content">
+        <h1>Welcome to ClipStationHub</h1>
+        <p>Your go-to platform for sharing, discovering and enjoying my latest clips.
+            Connect with me and email me your clips to be featured on this site!
 
-@if (Model.UploadedFiles != null && Model.UploadedFiles.Count > 0)
-{
-    <ul>
-        @foreach (var file in Model.UploadedFiles)
-        {
-            <li>
-                <video width="320" height="240" controls>
-                    <source src="@file" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p>@file</p>
-            </li>
-        }
-    </ul>
-}
-else
-{
-    <p>No videos uploaded yet.</p>
-}
+        </p>
+        <a href="/Clips" class="btn btn-primary btn-lg">Explore Clips</a>
+        
+        <!-- Email Section -->
+        <div class="email-section">
+            <a href="mailto:alexcardenas610@gmail.com" class="email-link">
+                <img src="~/images/email_logo.jpg" alt="Email" class="email-icon" />
+    </a>
+</div>
+    </div>
+</div>
+
+<div class="features-section">
+    <div class="feature">
+        <h2>Upload Your Clips</h2>
+        <p>Share your favorite moments with the world by emailing me your video clips.</p>
+    </div>
+    <div class="feature">
+        <h2>Engage with the Community</h2>
+        <p>Explore guides, stay updated with the latest news, and watch featured amazing clips from gamers 
+        around the world! Join me and help grow the ClipStationHub community today!</p>
+    </div>
+    <div class="feature">
+        <h2>Discover New Content</h2>
+        <p>Browse through a seamless collection of videos uploaded by me.</p>
+    </div>
+</div>

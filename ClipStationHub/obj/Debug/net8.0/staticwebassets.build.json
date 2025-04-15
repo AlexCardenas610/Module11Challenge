@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vDv/qY+tYJl34q1a3BP2uHrAuax8w9dovgPqFWjBDHc=",
+  "Hash": "llnZi4HBeyarS+AF7wfmZaO3rH89Egg0WlwVqPfxDoM=",
   "Source": "ClipStationHub",
   "BasePath": "_content/ClipStationHub",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/workspaces/Module11Challenge/ClipStationHub/wwwroot/images/email_logo.jpg",
+      "SourceId": "ClipStationHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "/workspaces/Module11Challenge/ClipStationHub/wwwroot/",
+      "BasePath": "_content/ClipStationHub",
+      "RelativePath": "images/email_logo.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/email_logo.jpg"
     },
     {
       "Identity": "/workspaces/Module11Challenge/ClipStationHub/wwwroot/js/site.js",
@@ -1193,6 +1212,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Identity": "/workspaces/Module11Challenge/ClipStationHub/wwwroot/uploads/19637207f7459-master_playlist.MP4",
+      "SourceId": "ClipStationHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "/workspaces/Module11Challenge/ClipStationHub/wwwroot/",
+      "BasePath": "_content/ClipStationHub",
+      "RelativePath": "uploads/19637207f7459-master_playlist.MP4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/19637207f7459-master_playlist.MP4"
+    },
+    {
+      "Identity": "/workspaces/Module11Challenge/ClipStationHub/wwwroot/uploads/Valorant.MP4",
+      "SourceId": "ClipStationHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "/workspaces/Module11Challenge/ClipStationHub/wwwroot/",
+      "BasePath": "_content/ClipStationHub",
+      "RelativePath": "uploads/Valorant.MP4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/Valorant.MP4"
     }
   ]
 }

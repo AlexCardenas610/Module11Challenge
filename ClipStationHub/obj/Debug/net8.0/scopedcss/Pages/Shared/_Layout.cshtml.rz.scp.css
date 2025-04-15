@@ -24,10 +24,10 @@ a[b-xfukjy41kf] {
 }
 
 .border-top[b-xfukjy41kf] {
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid #0b3f64;
 }
 .border-bottom[b-xfukjy41kf] {
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid #0b3f64 r;
 }
 
 .box-shadow[b-xfukjy41kf] {
@@ -45,4 +45,20 @@ button.accept-policy[b-xfukjy41kf] {
   width: 100%;
   white-space: nowrap;
   line-height: 60px;
+}
+
+body[b-xfukjy41kf] {
+  background-color: #0b3f64; /* Darker blue */
+  color: #ffffff; /* Optional: Set text color to white for better contrast */
+}
+
+a[b-xfukjy41kf] {
+  color: #1e90ff; /* Optional: Adjust link color for better visibility */
+}
+
+/* Existing styles... */
+.btn-primary[b-xfukjy41kf] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
 }
