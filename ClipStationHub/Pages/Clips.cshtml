@@ -1,26 +1,29 @@
 @page
-@model ClipsModel
+@model UploadModel
 @{
-    ViewData["Title"] = "Gaming Clips";
+    ViewData["Title"] = "Upload Video";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Welcome to the Gaming Clips page! Here you can find the latest and greatest clips from your favorite games.</p>
+<h2>Upload a Video</h2>
 
-<section>
-    <h2>Featured Clips</h2>
+<form method="post" enctype="multipart/form-data">
     <div>
-        <!-- Placeholder for clips -->
-        <p>No clips available at the moment.</p>
+        <label for="file">Select a video file:</label>
+        <input type="file" id="file" name="file" accept="video/*" />
     </div>
-</section>
-
-<section>
-    <h2>Submit Your Clip</h2>
-    <p>If you have a gaming clip you'd like to share, please upload it from your device:</p>
-    <form method="post" enctype="multipart/form-data" asp-page-handler="UploadClip">
-    <label for="clipFile">Upload Clip:</label>
-    <input type="file" id="clipFile" name="ClipFile" accept="video/*" required />
-    <button type="submit">Upload Clip</button>
+    <div>
+        <button type="submit">Upload</button>
+    </div>
 </form>
-</section>
+
+@if (ModelState.ErrorCount > 0)
+{
+    <div style="color: red;">
+        <ul>
+            @foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}

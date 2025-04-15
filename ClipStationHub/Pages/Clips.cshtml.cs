@@ -1,51 +1,61 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.IO;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace ClipStationHub.Pages
+public class UploadModel : PageModel
 {
-    public class ClipsModel : PageModel
+    private const long MaxFileSize = 104857600; // 100 MB
+
+    [RequestSizeLimit(MaxFileSize)] // 100 MB
+    public async Task<IActionResult> OnPostUploadAsync(IFormFile file)
     {
-        [BindProperty]
-        public IFormFile ClipFile { get; set; }
-
-        public async Task<IActionResult> OnPostUploadClip()
-{
-    if (ClipFile == null || ClipFile.Length == 0)
-    {
-        ModelState.AddModelError("", "Invalid file. Please select a valid video clip.");
-        return Page();
-    }
-
-    // Set a max file size (100MB in bytes)
-    const long maxFileSize = 104857600;
-
-    if (ClipFile.Length > maxFileSize)
-    {
-        ModelState.AddModelError("", "File size exceeds the 100MB limit.");
-        return Page();
-    }
-
-    // Define the target directory where clips will be saved
-    var uploadsFolder = Path.Combine("wwwroot", "clips");
-    Directory.CreateDirectory(uploadsFolder);
-
-    var filePath = Path.Combine(uploadsFolder, ClipFile.FileName);
-
-    using (var fileStream = new FileStream(filePath, FileMode.Create))
-    {
-        await ClipFile.CopyToAsync(fileStream);
-    }
-
-    return RedirectToPage("/Clips");
-}
-        public void OnGet()
+        if (file == null)
         {
-
+            ModelState.AddModelError("File", "No file uploaded.");
+            return Page();
         }
+
+        // Validate file size
+        if (file.Length > MaxFileSize)
+        {
+            ModelState.AddModelError("File", "File is too large. Max size is 100 MB.");
+            return Page();
+        }
+
+        // Validate file type (ensure it's a video)
+        var allowedFileTypes = new[] { "video/mp4", "video/avi", "video/mkv", "video/webm" }; // Add more video formats as needed
+        if (!allowedFileTypes.Contains(file.ContentType))
+        {
+            ModelState.AddModelError("File", "Invalid file type. Please upload a video file.");
+            return Page();
+        }
+
+        // Validate file extension
+        var allowedExtensions = new[] { ".mp4", ".avi", ".mkv", ".webm" };
+        var fileExtension = Path.GetExtension(file.FileName).ToLower();
+        if (!allowedExtensions.Contains(fileExtension))
+        {
+            ModelState.AddModelError("File", "Invalid file extension. Only video files are allowed.");
+            return Page();
+        }
+
+        // Save the file to the server (you can customize the path)
+        var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", file.FileName);
+        
+        // Ensure the upload directory exists
+        if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads")))
+        {
+            Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads"));
+        }
+
+        using (var stream = new FileStream(uploadPath, FileMode.Create))
+        {
+            await file.CopyToAsync(stream);
+        }
+
+        // Redirect to a success page or display a success message
+        return RedirectToPage("/Success"); 
     }
 }
-        
-
