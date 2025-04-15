@@ -1,19 +1,14 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace ClipStationHub.Pages;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
 
 public class IndexModel : PageModel
 {
-    private readonly ILogger<IndexModel> _logger;
-
-    public IndexModel(ILogger<IndexModel> logger)
-    {
-        _logger = logger;
-    }
+    public List<string> UploadedFiles { get; set; }
 
     public void OnGet()
     {
-
+        // Retrieve the list of uploaded files
+        UploadedFiles = UploadModel.UploadedFiles;
     }
 }

@@ -1,14 +1,18 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
+[RequestSizeLimit(104857600)] // 100 MB
 public class UploadModel : PageModel
 {
     private const long MaxFileSize = 104857600; // 100 MB
 
-    [RequestSizeLimit(MaxFileSize)] // 100 MB
+    // Static list to store uploaded file paths
+    public static List<string> UploadedFiles { get; set; } = new List<string>();
+
     public async Task<IActionResult> OnPostUploadAsync(IFormFile file)
     {
         if (file == null)
@@ -25,7 +29,7 @@ public class UploadModel : PageModel
         }
 
         // Validate file type (ensure it's a video)
-        var allowedFileTypes = new[] { "video/mp4", "video/avi", "video/mkv", "video/webm" }; // Add more video formats as needed
+        var allowedFileTypes = new[] { "video/mp4", "video/avi", "video/mkv", "video/webm" };
         if (!allowedFileTypes.Contains(file.ContentType))
         {
             ModelState.AddModelError("File", "Invalid file type. Please upload a video file.");
@@ -43,7 +47,7 @@ public class UploadModel : PageModel
 
         // Save the file to the server
         var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", file.FileName);
-        
+
         if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads")))
         {
             Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads"));
@@ -54,6 +58,9 @@ public class UploadModel : PageModel
             await file.CopyToAsync(stream);
         }
 
-        return RedirectToPage("/Success");
+        // Add the file path to the static list
+        UploadedFiles.Add($"/uploads/{file.FileName}");
+
+        return RedirectToPage("/Index"); // Redirect to the home page
     }
 }
