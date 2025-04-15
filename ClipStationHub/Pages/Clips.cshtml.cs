@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.IO;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 public class UploadModel : PageModel
 {
@@ -41,10 +41,9 @@ public class UploadModel : PageModel
             return Page();
         }
 
-        // Save the file to the server (you can customize the path)
+        // Save the file to the server
         var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", file.FileName);
         
-        // Ensure the upload directory exists
         if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads")))
         {
             Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads"));
@@ -55,7 +54,6 @@ public class UploadModel : PageModel
             await file.CopyToAsync(stream);
         }
 
-        // Redirect to a success page or display a success message
-        return RedirectToPage("/Success"); 
+        return RedirectToPage("/Success");
     }
 }

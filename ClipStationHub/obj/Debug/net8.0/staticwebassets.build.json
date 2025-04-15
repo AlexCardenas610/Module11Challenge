@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pbrcF6YYlwgAYmdnKtO9QJ5hozl0J5cAhs4eNYmEN94=",
+  "Hash": "vDv/qY+tYJl34q1a3BP2uHrAuax8w9dovgPqFWjBDHc=",
   "Source": "ClipStationHub",
   "BasePath": "_content/ClipStationHub",
   "Mode": "Default",
@@ -53,25 +53,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/workspaces/Module11Challenge/ClipStationHub/obj/Debug/net8.0/scopedcss/projectbundle/ClipStationHub.bundle.scp.css"
-    },
-    {
-      "Identity": "/workspaces/Module11Challenge/ClipStationHub/wwwroot/clips",
-      "SourceId": "ClipStationHub",
-      "SourceType": "Discovered",
-      "ContentRoot": "/workspaces/Module11Challenge/ClipStationHub/wwwroot/",
-      "BasePath": "_content/ClipStationHub",
-      "RelativePath": "clips",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/clips"
     },
     {
       "Identity": "/workspaces/Module11Challenge/ClipStationHub/wwwroot/css/site.css",

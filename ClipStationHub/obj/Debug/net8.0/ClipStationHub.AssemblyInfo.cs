@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ClipStationHub")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b7920daca37d863952b3389bacb2874e42db22a4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5eac2c5c746e37db789f914141a50679672b2167")]
 [assembly: System.Reflection.AssemblyProductAttribute("ClipStationHub")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ClipStationHub")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
